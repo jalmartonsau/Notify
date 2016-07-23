@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Notify.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -31,8 +32,10 @@ namespace Notify
             //this.ShowInTaskbar = false;
             this.Topmost = true;
 
-            Button.MouseLeftButtonDown += Button_MouseLeftButtonDown;
+            Button.MouseLeftButtonUp += Button_MouseLeftButtonUp;
+            Button.MouseMove += DragMove;
 
+            // Parameters
             Margin = 60;
             ScreenWidth = SystemParameters.PrimaryScreenWidth;
             ScreenHeight = SystemParameters.PrimaryScreenHeight;
@@ -43,6 +46,7 @@ namespace Notify
 
             SnapToDefault();
 
+            insert = new Insert();
         }
 
         #region Properties
@@ -61,17 +65,59 @@ namespace Notify
         private double _AppTop;
         public double AppTop { get { return _AppTop; } set { _AppTop = value; } }
 
+        private enum ButtonPosition { Left, Right };
+
+        #endregion
+
+        #region Insert
+
+        private Insert insert;
+
+        private void Button_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (insert.IsVisible)
+            {
+                insert.Hide();
+            }
+            else {
+                double midX = ScreenWidth / 2;
+                double midY = ScreenHeight / 2;
+                if (Application.Current.MainWindow.Left <= midX)
+                {
+                    insert.Left = Application.Current.MainWindow.Left + 60;
+                    insert.Top = Application.Current.MainWindow.Top;
+                }
+                else if (Application.Current.MainWindow.Left > midX)
+                {
+                    insert.Left = Application.Current.MainWindow.Left - (insert.Width + 10);
+                    insert.Top = Application.Current.MainWindow.Top;
+                }
+
+                
+                insert.Show();
+            }
+            
+        }
 
         #endregion
 
         #region Button Snap to sides
 
-        private void Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void DragMove(object sender, MouseEventArgs e)
         {
-            Application.Current.MainWindow.DragMove();
-            AppTop = Application.Current.MainWindow.Top;
-            AppLeft = Application.Current.MainWindow.Left;
-            MoveButton();
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                Application.Current.MainWindow.DragMove();
+                AppTop = Application.Current.MainWindow.Top;
+                AppLeft = Application.Current.MainWindow.Left;
+
+                if (insert.IsVisible)
+                {
+                    insert.Hide();
+                }
+
+                MoveButton();
+            }
         }
 
         Timer Animate = new Timer();
