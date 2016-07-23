@@ -13,5 +13,13 @@ namespace Notify
     /// </summary>
     public partial class App : Application
     {
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            // DO an Update.
+            // Load Items from DB
+            // Load GUI
+        }
+
     }
 }
