@@ -79,7 +79,7 @@ namespace Notify
 
             if (AppLeft <= midX)
             {
-                Application.Current.MainWindow.Left = Margin - 50;
+                Application.Current.MainWindow.Left = Margin - 55;
             } else if (AppLeft > midX) 
             {
                 Application.Current.MainWindow.Left = ScreenWidth - Margin;
