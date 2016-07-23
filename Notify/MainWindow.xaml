@@ -11,14 +11,23 @@
         Title="MainWindow" Height="50" Width="50"
         Background="Transparent">
     <Window.Resources>
-        
 
-        
+        <Style x:Key="PlusButton" TargetType="Border">
+            <Setter Property="Background" Value="#2D882D" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1ACD1A"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
     </Window.Resources>
     
     <Grid Background="Transparent">
 
-        <Border Name="Button" CornerRadius="50" Background="#2D882D">
+        <Border Name="Button" CornerRadius="50" Style="{StaticResource PlusButton}">
             <StackPanel>
                 <Rectangle Width="30" Height="2" Fill="White" Margin="0,25,0,0"/>
                 <Rectangle Width="2" Height="30" Fill="White" Margin="0,-16,0,0" />
