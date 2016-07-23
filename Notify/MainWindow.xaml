@@ -29,8 +29,8 @@
 
         <Border Name="Button" CornerRadius="50" Style="{StaticResource PlusButton}">
             <StackPanel>
-                <Rectangle Width="30" Height="3" Fill="White" Margin="0,24,0,0"/>
-                <Rectangle Width="3" Height="30" Fill="White" Margin="0,-16,0,0" />
+                <Rectangle Width="31" Height="3" Fill="White" Margin="0,24,0,0"/>
+                <Rectangle Width="3" Height="31" Fill="White" Margin="0,-17.1,0,0" />
             </StackPanel>
         </Border>
         
