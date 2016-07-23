@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -44,13 +45,7 @@ namespace Notify
 
         }
 
-        private void Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Application.Current.MainWindow.DragMove();
-            AppTop = Application.Current.MainWindow.Top;
-            AppLeft = Application.Current.MainWindow.Left;
-            MoveButton();
-        }
+        
 
 
         #region Properties
@@ -63,15 +58,26 @@ namespace Notify
         double AppWidth { get; set; }
         double AppHeight { get; set; }
 
-        double _AppLeft;
-        double AppLeft { get { return _AppLeft; } set { _AppLeft = value; } }
+        private double _AppLeft;
+        public double AppLeft { get { return _AppLeft; } set { _AppLeft = value; } }
 
-        double _AppTop;
-        double AppTop { get { return _AppTop; } set { _AppTop = value; } }
+        private double _AppTop;
+        public double AppTop { get { return _AppTop; } set { _AppTop = value; } }
 
 
         #endregion
 
+        #region Button Snap to sides
+
+        private void Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.MainWindow.DragMove();
+            AppTop = Application.Current.MainWindow.Top;
+            AppLeft = Application.Current.MainWindow.Left;
+            MoveButton();
+        }
+
+        Timer Animate = new Timer();
         private void MoveButton()
         {
             double midX = ScreenWidth / 2;
@@ -79,19 +85,55 @@ namespace Notify
 
             if (AppLeft <= midX)
             {
-                Application.Current.MainWindow.Left = Margin - 55;
+                Animate.Elapsed += new ElapsedEventHandler(SnapToLeft);
             } else if (AppLeft > midX) 
             {
-                Application.Current.MainWindow.Left = ScreenWidth - Margin;
+                Animate.Elapsed += new ElapsedEventHandler(SnapToRight);
             }
+            
+            Animate.Interval = 1;
+            Animate.Enabled = true;
 
+        }
 
+        private void SnapToRight(object source, ElapsedEventArgs e)
+        {
+            if (AppLeft < (ScreenWidth - Margin))
+            {
+                AppLeft += 100;
+                Dispatcher.Invoke(() => Application.Current.MainWindow.Left = AppLeft);
+            }
+            else {
+                Dispatcher.Invoke(() => Application.Current.MainWindow.Left = ScreenWidth - Margin);
+                KillAnimation();
+            }
+        }
+
+        private void SnapToLeft(object source, ElapsedEventArgs e)
+        {
+            if (AppLeft > Margin - 55)
+            {
+                AppLeft -= 100;
+                Dispatcher.Invoke(() => Application.Current.MainWindow.Left = AppLeft);
+            }
+            else {
+                Dispatcher.Invoke(() => Application.Current.MainWindow.Left = Margin - 55);
+                KillAnimation();
+            }
+        }
+
+        private void KillAnimation()
+        {
+            Animate.Enabled = false;
+            Animate = new Timer();
         }
         
         private void SnapToDefault() {
             Application.Current.MainWindow.Left = ScreenWidth - Margin;
             Application.Current.MainWindow.Top = ScreenHeight - (Margin + 70);
         }
+
+        #endregion
 
     }
 }
