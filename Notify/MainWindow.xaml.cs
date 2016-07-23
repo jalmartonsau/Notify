@@ -45,9 +45,6 @@ namespace Notify
 
         }
 
-        
-
-
         #region Properties
 
         int Margin { get; set; }
