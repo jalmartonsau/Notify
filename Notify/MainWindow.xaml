@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Notify"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Title="MainWindow" Height="50" Width="50"
+        Background="Transparent">
+    <Window.Resources>
+        
+
+        
+    </Window.Resources>
+    
+    <Grid Background="Transparent">
+
+        <Border Name="Button" CornerRadius="50" Background="#2D882D">
+            <StackPanel>
+                <Rectangle Width="30" Height="2" Fill="White" Margin="0,25,0,0"/>
+                <Rectangle Width="2" Height="30" Fill="White" Margin="0,-16,0,0" />
+            </StackPanel>
+        </Border>
         
     </Grid>
 </Window>
