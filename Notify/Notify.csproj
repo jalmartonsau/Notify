@@ -62,6 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DelegateCommand.cs" />
     <Compile Include="Model\InsertVM.cs" />
     <Compile Include="Model\ModelBase.cs" />
     <Compile Include="Update.cs" />

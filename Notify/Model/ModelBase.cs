@@ -10,6 +10,11 @@ namespace Notify.Model
     class ModelBase
     {
 
+        protected ModelBase()
+        {
+            
+        }
+
         #region OnPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;

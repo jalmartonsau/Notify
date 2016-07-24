@@ -20,6 +20,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBox Grid.ColumnSpan="2" DockPanel.Dock="Top" Text="{Binding Insert}" />
+        <TextBox Grid.ColumnSpan="2" DockPanel.Dock="Top" Text="{Binding Insert, UpdateSourceTrigger=PropertyChanged}" />
+        <Button Grid.Row="1" Command="{Binding TestCommand}"  >Hello</Button>
     </Grid>
 </Window>
