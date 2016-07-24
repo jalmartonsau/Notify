@@ -12,6 +12,14 @@
         d:DataContext="{x:Type vm:InsertVM}"
         Title="Insert" Height="100" Width="300">
     <Grid>
-        <TextBox DockPanel.Dock="Top" Text="{Binding Insert}" Name="Insert"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.ColumnSpan="2" DockPanel.Dock="Top" Text="{Binding Insert}" />
     </Grid>
 </Window>
