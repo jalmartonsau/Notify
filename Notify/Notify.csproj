@@ -62,6 +62,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\InsertVM.cs" />
+    <Compile Include="Model\ModelBase.cs" />
     <Compile Include="Update.cs" />
     <Compile Include="Views\Insert.xaml.cs">
       <DependentUpon>Insert.xaml</DependentUpon>
@@ -117,9 +119,7 @@
       <Name>Notify.Service</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\plus-sm.png" />
   </ItemGroup>
