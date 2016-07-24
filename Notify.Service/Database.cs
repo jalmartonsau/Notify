@@ -10,7 +10,6 @@ namespace Notify.Service
 {
     public class Database
     {
-        // Connection to the database.
         private static string Username = "tonsau";
         private static string Password = "uhbvfewshg";
         private static string Host = "tonsau.eu";
@@ -26,15 +25,7 @@ namespace Notify.Service
             }
         }
 
-        public void test() {
-            try
-            {
-                Connection.Open();
-            }
-            catch (Exception ex) {
-                Debug.WriteLine(ex);
-            }
-        }
+        
 
 
     }

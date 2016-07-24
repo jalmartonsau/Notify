@@ -117,7 +117,9 @@
       <Name>Notify.Service</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\plus-sm.png" />
   </ItemGroup>

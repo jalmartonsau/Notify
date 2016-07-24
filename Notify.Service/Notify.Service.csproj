@@ -51,6 +51,7 @@
     <Compile Include="Database.cs" />
     <Compile Include="DataItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

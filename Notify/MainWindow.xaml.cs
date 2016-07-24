@@ -47,8 +47,7 @@ namespace Notify
             SnapToDefault();
 
             // Check user credentials and such. otherwise program stops here.
-            var DB = new Service.Database();
-            DB.test();
+            
 
 
             insert = new Insert();
