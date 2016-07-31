@@ -9,8 +9,10 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="#2f2f2f"
-        d:DataContext="{x:Type vm:InsertVM}"
         Title="Insert" Height="100" Width="300">
+    <Window.DataContext>
+        <vm:InsertVM/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -20,7 +22,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBox Grid.ColumnSpan="2" DockPanel.Dock="Top" Text="{Binding Insert, UpdateSourceTrigger=PropertyChanged}" />
-        <Button Grid.Row="1" Command="{Binding TestCommand}"  >Hello</Button>
+        <TextBox Grid.ColumnSpan="2" DockPanel.Dock="Top" Text="{Binding Insert}" />
+        <Button Grid.Row="1" Command="{Binding TestCommand, Mode=OneWay}"  >Hello</Button>
     </Grid>
 </Window>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Notify.Model
 {
-    class ModelBase
+    class ModelBase : INotifyPropertyChanged
     {
 
         protected ModelBase()

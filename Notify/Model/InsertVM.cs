@@ -12,6 +12,7 @@ namespace Notify.Model
         public InsertVM()
         {
             TestCommand = new DelegateCommand(Test);
+
         }
 
 
